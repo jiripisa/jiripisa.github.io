@@ -1,0 +1,136 @@
+{
+  "owner": "jiripisa",
+  "person": {
+    "name": "Jiří Píša",
+    "intro": "I build music software, small pieces of MIDI hardware and tools that make a programmer's day shorter. Everything below is open source.",
+    "location": "Prague",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/jiripisa" },
+      { "label": "jp4.io", "url": "https://www.jp4.io" }
+    ]
+  },
+  "includeForks": false,
+  "exclude": ["pluginarium"],
+  "archiveBefore": "2016-01-01",
+  "defaultSection": "other",
+  "sections": [
+    {
+      "id": "music",
+      "title": "Music and sound",
+      "intro": "Sequencers, instruments and recorders for the studio, on the Mac and on dedicated hardware.",
+      "layout": "feature"
+    },
+    {
+      "id": "mac",
+      "title": "Mac apps",
+      "intro": "Small native apps that each do one thing well.",
+      "layout": "feature"
+    },
+    {
+      "id": "dev",
+      "title": "Developer tools",
+      "intro": "Command-line and terminal tools from my own daily work.",
+      "layout": "panel"
+    },
+    {
+      "id": "other",
+      "title": "More projects",
+      "intro": "Recently published and not sorted yet.",
+      "layout": "panel"
+    },
+    {
+      "id": "archive",
+      "title": "From the archive",
+      "intro": "Libraries and apps from 2011 to 2014, kept for the record.",
+      "image": "assets/art/archive.jpg",
+      "layout": "list"
+    }
+  ],
+  "projects": {
+    "berlinan": {
+      "section": "music",
+      "order": 1,
+      "title": "Berlinan",
+      "image": "https://jiripisa.github.io/berlinan/assets/berlinan-window.png",
+      "icon": "https://jiripisa.github.io/berlinan/assets/icon.png",
+      "summary": "A generative MIDI sequencer in the Berlin School style. Several short melodic loops repeat, drift against each other and change only a little at a time."
+    },
+    "fm1-berlinan": {
+      "section": "music",
+      "order": 2,
+      "title": "Berlinan for FM-1",
+      "image": "https://jiripisa.github.io/fm1-berlinan/img/fm1-panel.svg",
+      "imageFit": "contain",
+      "icon": "https://jiripisa.github.io/fm1-berlinan/assets/icon.png",
+      "summary": "The Berlinan sequencer as firmware for the M-VAVE FM-1. Plug it into any USB MIDI synth and it plays on its own, no computer needed."
+    },
+    "didgeridoo": {
+      "section": "music",
+      "order": 3,
+      "title": "Didgeridoo",
+      "image": "https://jiripisa.github.io/didgeridoo/assets/didgeridoo-window.png",
+      "icon": "https://jiripisa.github.io/didgeridoo/assets/icon.png"
+    },
+    "rackmate": {
+      "section": "music",
+      "order": 4,
+      "title": "Rackmate",
+      "image": "https://jiripisa.github.io/rackmate/assets/rackmate-window.png",
+      "icon": "https://jiripisa.github.io/rackmate/assets/icon.png"
+    },
+    "MIDIops": {
+      "section": "music",
+      "order": 5,
+      "image": "assets/art/midiops.jpg"
+    },
+    "Sampio": {
+      "section": "music",
+      "order": 6,
+      "image": "assets/art/sampio.jpg",
+      "summary": "A fast, focused audio sample recorder and editor for macOS."
+    },
+    "cecko": {
+      "section": "mac",
+      "order": 1,
+      "title": "Céčko",
+      "image": "https://jiripisa.github.io/cecko/assets/cecko-window.png",
+      "icon": "https://jiripisa.github.io/cecko/assets/icon.png"
+    },
+    "MDPre": {
+      "section": "mac",
+      "order": 2,
+      "image": "assets/art/mdpre.jpg"
+    },
+    "tuipe": {
+      "section": "dev",
+      "order": 1,
+      "image": "assets/art/tuipe.jpg"
+    },
+    "kitchen": {
+      "section": "dev",
+      "order": 2,
+      "image": "assets/art/kitchen.jpg",
+      "summary": "A developer toolbox with a terminal UI. It starts with live Kubernetes logs."
+    },
+    "treeji": {
+      "section": "dev",
+      "order": 3,
+      "image": "assets/art/treeji.jpg"
+    },
+    "macbook-installer": {
+      "section": "dev",
+      "order": 4,
+      "title": "MacBook installer",
+      "image": "assets/art/macbook-installer.jpg",
+      "summary": "One command that gets a new MacBook ready for programming."
+    },
+    "jp4boot": {
+      "section": "dev",
+      "order": 5,
+      "summary": "Bootstraps a macOS SwiftUI app with a standard project layout, build scripts and a distribution pipeline, all without Xcode."
+    },
+    "Kurzovni-Listek": {
+      "title": "Kurzovní lístek"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{name}}: projects</title>
+<meta name="description" content="{{intro}}">
+<meta property="og:title" content="{{name}}: projects">
+<meta property="og:description" content="{{intro}}">
+<meta property="og:image" content="https://jiripisa.github.io/assets/art/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E4E6E0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161B20" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#catalog">Skip to the projects</a>
+
+<header class="top wrap">
+  <a class="mark" href="#" aria-label="{{name}}, home"><img src="favicon.svg" alt="" width="28" height="28"></a>
+  <nav aria-label="Elsewhere">{{links}}</nav>
+</header>
+
+<main>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <h1 id="hero-title">{{name}}</h1>
+    <p class="intro">{{intro}}</p>
+  </section>
+
+  <section class="console-wrap wrap" aria-label="All projects as a step sequencer">
+    <div class="console" data-console>
+      <div class="console-bar">
+        <button class="play" type="button" data-play aria-pressed="false">
+          <span class="play-icon" aria-hidden="true"></span>
+          <span data-play-label>Play the catalog</span>
+        </button>
+        <output class="readout" data-readout aria-live="off">{{count}} projects, {{span}}</output>
+      </div>
+      <ol class="pads" data-pads>
+{{pads}}
+      </ol>
+      <ul class="legend">{{legend}}</ul>
+    </div>
+  </section>
+
+  <div id="catalog">
+{{sections}}
+  </div>
+</main>
+
+<footer class="bottom wrap">
+  <p>Generated from my GitHub repositories, last built {{built}}.</p>
+  <p><a href="https://github.com/jiripisa/jiripisa.github.io">Source of this page</a></p>
+</footer>
+
+<script src="sequencer.js" defer></script>
+</body>
+</html>
