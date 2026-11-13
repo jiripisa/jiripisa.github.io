@@ -10,7 +10,7 @@
     ]
   },
   "includeForks": false,
-  "exclude": ["pluginarium"],
+  "exclude": ["pluginarium", "jiripisa.github.io"],
   "archiveBefore": "2016-01-01",
   "defaultSection": "other",
   "sections": [
