@@ -268,7 +268,7 @@ a:hover {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8.25rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8.25rem, 1fr));
   gap: 0.5rem;
 }
 
@@ -472,6 +472,79 @@ h3 {
 
 .button.primary:hover {
   background: color-mix(in srgb, var(--ink) 85%, var(--panel));
+}
+
+.button-note {
+  margin-left: 0.6em;
+  padding-left: 0.6em;
+  border-left: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Several release files: the button opens a list of platforms */
+.downloads {
+  position: relative;
+}
+
+.downloads summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.downloads summary::-webkit-details-marker {
+  display: none;
+}
+
+.downloads summary::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  margin-left: 0.6em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+}
+
+.downloads[open] summary::after {
+  transform: translateY(0.1em) rotate(-135deg);
+}
+
+.downloads ul {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  min-width: 18rem;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: var(--panel-raised);
+  border-radius: var(--radius-m);
+  box-shadow: 0 0 0 1px var(--rule), 0 16px 32px -16px rgb(10 16 22 / 0.45);
+}
+
+.downloads li a {
+  display: flex;
+  white-space: nowrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-s);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.downloads li a:hover,
+.downloads li a:focus-visible {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.downloads li span {
+  color: var(--muted);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Feature rows: a big picture and the story next to it */

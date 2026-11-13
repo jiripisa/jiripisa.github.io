@@ -10,6 +10,7 @@
     ]
   },
   "includeForks": false,
+  "onlyWithPages": true,
   "exclude": ["pluginarium", "jiripisa.github.io"],
   "archiveBefore": "2016-01-01",
   "defaultSection": "other",
@@ -17,7 +18,7 @@
     {
       "id": "music",
       "title": "Music and sound",
-      "intro": "Sequencers, instruments and recorders for the studio, on the Mac and on dedicated hardware.",
+      "intro": "Sequencers and instruments for the studio, on the Mac and on dedicated hardware.",
       "layout": "feature"
     },
     {
@@ -30,7 +31,7 @@
       "id": "dev",
       "title": "Developer tools",
       "intro": "Command-line and terminal tools from my own daily work.",
-      "layout": "panel"
+      "layout": "feature"
     },
     {
       "id": "other",

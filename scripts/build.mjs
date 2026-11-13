@@ -29,18 +29,35 @@ console.log(`Built ${projects.length} projects in ${sections.length} sections in
 
 // ---------------------------------------------------------------------------
 
-async function fetchRepos(owner) {
+// Returns the parsed JSON, or null when the resource does not exist (404).
+async function github(path) {
   const headers = { Accept: "application/vnd.github+json", "User-Agent": "project-catalog-build" };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const url = `https://api.github.com${path}`;
+  const res = await fetch(url, { headers });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub API ${res.status} for ${url}: ${await res.text()}`);
+  return res.json();
+}
+
+async function fetchRepos(owner) {
   const all = [];
   for (let page = 1; ; page++) {
-    const url = `https://api.github.com/users/${owner}/repos?type=owner&per_page=100&page=${page}`;
-    const res = await fetch(url, { headers });
-    if (!res.ok) throw new Error(`GitHub API ${res.status} for ${url}: ${await res.text()}`);
-    const batch = await res.json();
+    const batch = await github(`/users/${owner}/repos?type=owner&per_page=100&page=${page}`);
     all.push(...batch);
     if (batch.length < 100) return all;
   }
+}
+
+// Files of the latest published release, without checksums and signatures.
+async function fetchDownloads(repo) {
+  const release = await github(`/repos/${repo.full_name}/releases/latest`);
+  if (!release) return null;
+  const files = release.assets
+    .filter((asset) => !/(checksums?\.txt|\.sig|\.asc|\.sha256)$/i.test(asset.name))
+    .map((asset) => ({ name: asset.name, url: asset.browser_download_url, size: asset.size }));
+  if (files.length === 0) return null;
+  return { version: release.tag_name.replace(/^v/, ""), date: release.published_at, files };
 }
 
 async function buildProjects(repos, config) {
@@ -51,6 +68,7 @@ async function buildProjects(repos, config) {
   for (const repo of repos) {
     if (repo.private || excluded.has(repo.name.toLowerCase())) continue;
     if (repo.fork && !config.includeForks) continue;
+    if (config.onlyWithPages && !repo.has_pages) continue;
 
     const extra = config.projects[repo.name] ?? {};
     const isOld = repo.pushed_at < config.archiveBefore;
@@ -74,6 +92,7 @@ async function buildProjects(repos, config) {
       pushed: repo.pushed_at,
       source: repo.html_url,
       website,
+      downloads: await fetchDownloads(repo),
     });
   }
 
@@ -102,7 +121,8 @@ async function usableImage(path) {
 function render(template, config, sections) {
   const projects = sections.flatMap((s) => s.projects);
   const years = projects.flatMap((p) => [p.created, p.pushed]).map((d) => Number(d.slice(0, 4)));
-  const span = `${Math.min(...years)}–${Math.max(...years)}`;
+  const [first, last] = [Math.min(...years), Math.max(...years)];
+  const span = first === last ? String(first) : `${first}–${last}`;
   const person = config.person;
 
   return template
@@ -211,9 +231,50 @@ function meta(p) {
 
 function actions(p) {
   const links = [];
-  if (p.website) links.push(`<a class="button primary" href="${esc(p.website)}">Open website</a>`);
+  if (p.downloads) links.push(download(p.downloads));
+  if (p.website) {
+    links.push(`<a class="button${p.downloads ? "" : " primary"}" href="${esc(p.website)}">Open website</a>`);
+  }
   links.push(`<a class="button" href="${esc(p.source)}">Source code</a>`);
-  return `<p class="actions">${links.join("")}</p>`;
+  return `<div class="actions">${links.join("")}</div>`;
+}
+
+// One file gets a direct button; several files (one per platform) get a menu.
+function download({ version, files }) {
+  if (files.length === 1) {
+    const [file] = files;
+    return (
+      `<a class="button primary" href="${esc(file.url)}">Download ${esc(version)}` +
+      `<span class="button-note">${esc(fileKind(file.name))}, ${formatSize(file.size)}</span></a>`
+    );
+  }
+  const items = files
+    .map(
+      (file) =>
+        `<li><a href="${esc(file.url)}">${esc(platform(file.name))}<span>${formatSize(file.size)}</span></a></li>`,
+    )
+    .join("");
+  return `<details class="downloads"><summary class="button primary">Download ${esc(version)}</summary><ul>${items}</ul></details>`;
+}
+
+function fileKind(name) {
+  const ext = name.split(".").pop().toLowerCase();
+  return { dmg: "macOS disk image", fwsc: "firmware", zip: "ZIP archive", pkg: "macOS installer" }[ext] ?? `.${ext} file`;
+}
+
+// Turns release file names like tuipe_0.2.3_darwin_arm64.tar.gz into "macOS, Apple silicon".
+function platform(name) {
+  const lower = name.toLowerCase();
+  const os = /darwin|macos/.test(lower) ? "macOS" : /linux/.test(lower) ? "Linux" : /windows/.test(lower) ? "Windows" : null;
+  const arm = /arm64|aarch64/.test(lower);
+  const intel = /amd64|x86_64|x64/.test(lower);
+  if (!os) return name;
+  if (os === "macOS") return arm ? "macOS, Apple silicon" : intel ? "macOS, Intel" : "macOS";
+  return arm ? `${os}, ARM` : intel ? `${os}, x64` : os;
+}
+
+function formatSize(bytes) {
+  return bytes >= 1e6 ? `${(bytes / 1e6).toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1e3))} kB`;
 }
 
 function anchor(p) {

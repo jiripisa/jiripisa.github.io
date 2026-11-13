@@ -14,6 +14,7 @@ Everything that is not in GitHub lives in [`projects.json`](projects.json):
 | `person` | Name, introduction and links in the page header. |
 | `exclude` | Repositories that never appear on the page. |
 | `includeForks` | Whether forks are listed (off by default). |
+| `onlyWithPages` | List only repositories that have a GitHub Pages site. |
 | `archiveBefore` | Repositories last pushed before this date go to the archive section. |
 | `defaultSection` | Section for new repositories that `projects` does not mention. |
 | `sections` | Section order, titles, introductions and layout (`feature`, `panel` or `list`). |
