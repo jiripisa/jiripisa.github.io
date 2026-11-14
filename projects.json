@@ -87,8 +87,10 @@
     "Sampio": {
       "section": "music",
       "order": 6,
-      "image": "assets/art/sampio.jpg",
-      "summary": "A fast, focused audio sample recorder and editor for macOS."
+      "title": "Sampio",
+      "image": "https://jiripisa.github.io/Sampio/assets/Sampio-window.png",
+      "icon": "https://jiripisa.github.io/Sampio/assets/icon.png",
+      "summary": "Records a sound, cuts it to the part you want and exports it as a sample for a sampler. It can also split a recording into vocals and everything else, on your Mac."
     },
     "cecko": {
       "section": "mac",
