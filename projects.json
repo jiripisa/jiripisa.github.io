@@ -70,7 +70,8 @@
       "order": 3,
       "title": "Didgeridoo",
       "image": "https://jiripisa.github.io/didgeridoo/assets/didgeridoo-window.png",
-      "icon": "https://jiripisa.github.io/didgeridoo/assets/icon.png"
+      "icon": "https://jiripisa.github.io/didgeridoo/assets/icon.png",
+      "summary": "A synthesized didgeridoo to play from a keyboard: a drone with moving overtones, a sung voice, breath and rhythm. A standalone Mac app and an Audio Unit instrument for hosts such as Ableton Live and Logic Pro."
     },
     "rackmate": {
       "section": "music",
