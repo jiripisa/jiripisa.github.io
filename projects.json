@@ -78,7 +78,8 @@
       "order": 4,
       "title": "Rackmate",
       "image": "https://jiripisa.github.io/rackmate/assets/rackmate-window.png",
-      "icon": "https://jiripisa.github.io/rackmate/assets/icon.png"
+      "icon": "https://jiripisa.github.io/rackmate/assets/icon.png",
+      "summary": "Turns a Mac into one more instrument in a studio without a computer: load a rack of Audio Unit plugins, play them over MIDI, and map controller knobs to their parameters."
     },
     "MIDIops": {
       "section": "music",
