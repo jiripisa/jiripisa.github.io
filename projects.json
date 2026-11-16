@@ -94,6 +94,14 @@
       "icon": "https://jiripisa.github.io/Sampio/assets/icon.png",
       "summary": "Records a sound, cuts it to the part you want and exports it as a sample for a sampler. It can also split a recording into vocals and everything else, on your Mac."
     },
+    "brumle": {
+      "section": "music",
+      "order": 7,
+      "title": "Brumle",
+      "image": "https://jiripisa.github.io/brumle/assets/brumle-window.png",
+      "icon": "https://jiripisa.github.io/brumle/assets/icon.png",
+      "summary": "A synthesized jaw harp to play from a keyboard or sixteen pads: twang, moving overtones and breath, with presets, kits and MIDI learn. A standalone Mac app and an Audio Unit instrument."
+    },
     "cecko": {
       "section": "mac",
       "order": 1,
