@@ -152,6 +152,14 @@
       "image": "https://jiripisa.github.io/fanfrnoch/assets/fanfrnoch-window.png",
       "icon": "https://jiripisa.github.io/fanfrnoch/assets/icon.png",
       "summary": "A synthesized Czech friction drum to play from a keyboard or sixteen pads: deep pulled grunts for rhythm, from the fanfrnoch to the cuíca, with presets and kits. A standalone Mac app and an Audio Unit instrument."
+    },
+    "hangdrum": {
+      "section": "music",
+      "order": 9,
+      "title": "Hangdrum",
+      "image": "https://jiripisa.github.io/hangdrum/assets/hangdrum-window.png",
+      "icon": "https://jiripisa.github.io/hangdrum/assets/icon.png",
+      "summary": "A synthesized handpan to play from a keyboard or sixteen pads: ringing steel fields that beat and bloom, no two strokes alike, with presets and kits. A standalone Mac app and an Audio Unit instrument."
     }
   }
 }
