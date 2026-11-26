@@ -160,6 +160,13 @@
       "image": "https://jiripisa.github.io/hangdrum/assets/hangdrum-window.png",
       "icon": "https://jiripisa.github.io/hangdrum/assets/icon.png",
       "summary": "A synthesized handpan to play from a keyboard or sixteen pads: ringing steel fields that beat and bloom, no two strokes alike, with presets and kits. A standalone Mac app and an Audio Unit instrument."
+    },
+    "create-audio-plugin": {
+      "section": "music",
+      "order": 10,
+      "title": "create-audio-plugin",
+      "image": "https://jiripisa.github.io/create-audio-plugin/assets/create-audio-plugin-page.jpg",
+      "icon": "https://jiripisa.github.io/create-audio-plugin/assets/icon.svg"
     }
   }
 }
